@@ -44,8 +44,18 @@ function logBoolean(arg: boolen) {
 
 logBoolean(true)
 
+// New requirement logArr
+
+function logArray(arg: any[]) {
+  console.log(arg)
+  return arg
+}
+
+logArray([4, 6, 7])
+
 // BUT WE WILL CREATE A GENERIC FUNCTION WHICH WILL AUTOMATICALLY INFER THE TYPE AT RUN TIME
 
+// So T is a placeholder that gets inferred or passed explicitly.
 function logAnything<T>(arg: T): T {
   console.log(arg)
   return arg
@@ -55,14 +65,25 @@ logAnything([2, 4, 6])
 logAnything('45')
 logAnything<number>(345)
 
-// New requirement logArr
+/** Example-2: TypeScript Generic Version */
 
-function logArray(arg: any[]) {
-  console.log(arg)
-  return arg
+function getFirst<T>(arg: T[]): T {
+  return arg[0]
 }
 
-logArray([4, 6, 7])
+const num = getFirst([10, 20, 30]) // T = number
+const str = getFirst(['work', 'hard', 'spend time practicing']) // T = string
+const user = getFirst([{ name: 'imran' }, { name: 'rawdha' }]) // T = object -- {name:string}
+
+function wrapInArray<T>(val: T): T[] {
+  return [val]
+}
+
+wrapInArray('hello')
+wrapInArray(23)
+wrapInArray(false)
+
+// Now T keeps the original type and wraps it properly.
 
 export default function TypeScript() {
   const { username, age, email, employeeId } = roufi
@@ -79,6 +100,12 @@ export default function TypeScript() {
       </div>
 
       <h2>{logNumber(45)}</h2>
+
+      <div className="border-3 border-b-rose-500 max-w-[300px]">
+        <p>{user.name}</p>
+        <p>{num}</p>
+        <p>{str}</p>
+      </div>
     </div>
   )
 }
