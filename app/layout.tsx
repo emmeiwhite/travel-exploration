@@ -7,7 +7,11 @@ const font = Poppins({
   subsets: ['latin']
 })
 
-export const metadata: Metadata = {}
+export const metadata: Metadata = {
+  title: 'Travel Your Way | Next.js 15',
+  description: 'Travel made easy yet challenging and daring with Next.js as your companion'
+}
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
