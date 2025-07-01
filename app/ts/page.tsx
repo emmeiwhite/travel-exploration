@@ -118,8 +118,39 @@ console.log(age1)
 console.log(person.age)
 console.log(person.name)
 
-export default function TypeScript() {
+// GENERIC TYPE TO FETCH CORRECT DATA:
+
+type TReaction = {
+  likes: number
+  dislikes: number
+}
+type TPost = {
+  id: number
+  title: string
+  body: string
+  tags: string[]
+  reactions: TReaction
+  views: number
+  userId: number
+}
+
+type PostResponse = {
+  posts: TPost[]
+  total: number
+  skip: number
+  limit: number
+}
+
+async function fetchData<T>(path: string): Promise<T> {
+  const response = await fetch(`https://dummyjson.com${path}`)
+  return response.json()
+}
+
+export default async function TypeScript() {
   const { username, age, email, employeeId } = roufi
+
+  const data = await fetchData('/posts')
+  console.log(data)
   return (
     <div>
       <h1>TypeScript</h1>
