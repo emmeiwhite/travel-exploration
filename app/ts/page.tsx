@@ -37,7 +37,7 @@ logNumber(23)
 
 // Assume yet a new requirement arises to log Boolean
 
-function logBoolean(arg: boolen) {
+function logBoolean(arg: boolean) {
   console.log(arg)
   return arg
 }
@@ -46,7 +46,7 @@ logBoolean(true)
 
 // New requirement logArr
 
-function logArray(arg: any[]) {
+function logArray<T>(arg: T[]) {
   console.log(arg)
   return arg
 }
@@ -84,6 +84,39 @@ wrapInArray(23)
 wrapInArray(false)
 
 // Now T keeps the original type and wraps it properly.
+
+// Question-1: getOldest person from the age array
+type AgeType = {
+  age: number
+}
+
+function getOldest<T extends AgeType>(people: T[]): T {
+  return people.sort((a, b) => b.age - a.age)[0]
+}
+
+const ages: AgeType[] = [{ age: 30 }, { age: 50 }, { age: 25 }, { age: 13 }]
+
+getOldest(ages)
+
+type PlayerType = {
+  name: string
+  age: number
+}
+
+const players: PlayerType[] = [
+  { name: 'John', age: 30 },
+  { name: 'Jane', age: 50 },
+  { name: 'Tom', age: 25 }
+]
+
+// Assertion
+// const p = getOldest(players) as Player // Assertion is not a good thing in this case
+
+const person = getOldest(players)
+const age1 = getOldest(ages)
+console.log(age1)
+console.log(person.age)
+console.log(person.name)
 
 export default function TypeScript() {
   const { username, age, email, employeeId } = roufi
