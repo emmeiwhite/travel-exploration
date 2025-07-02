@@ -1,5 +1,6 @@
 import { navLinks } from '@/constants/constants'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { HiBars3BottomRight } from 'react-icons/hi2'
 import { TbAirBalloon } from 'react-icons/tb'
 
@@ -8,8 +9,33 @@ type NavProps = {
 }
 
 export default function Nav({ handleShowNav }: NavProps) {
+  const [hasScrollBg, setHasScrollBg] = useState(false)
+
+  // 1. Rule of law in React --- Perform side-effect in useEffect()
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollValue = window.scrollY
+
+      if (scrollValue > 100) {
+        setHasScrollBg(true)
+      } else if (scrollValue <= 100) {
+        setHasScrollBg(false)
+      }
+    }
+
+    //   Setting the scroll handler --- which is a high frequency event
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <div className="bg-blue-950 transition-all duration-200 h-[12vh] z-30 fixed w-full">
+    <div
+      className={`${
+        hasScrollBg ? 'bg-blue-950 shadow-md' : ''
+      } transition-all duration-200 h-[12vh] z-30 fixed w-full`}>
       {/* Layout Container */}
       <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-full">
         {/* 1. LOGO */}
