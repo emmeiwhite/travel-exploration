@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { HiBars3BottomRight } from 'react-icons/hi2'
 import { TbAirBalloon } from 'react-icons/tb'
 
-export default function Nav() {
-  return (
-    <div className="bg-blue-950 transition-all duration-200 h-[12vh] z-[1000] ">
-      {/* Layout Container */}
+type NavProps = {
+  handleShowNav: () => void
+}
 
+export default function Nav({ handleShowNav }: NavProps) {
+  return (
+    <div className="bg-blue-950 transition-all duration-200 h-[12vh] z-30 fixed w-full">
+      {/* Layout Container */}
       <div className="max-w-5xl mx-auto px-6 flex items-center justify-between h-full">
         {/* 1. LOGO */}
         <div className="flex items-center gap-2">
@@ -41,7 +44,10 @@ export default function Nav() {
             Book Now
           </button>
 
-          <HiBars3BottomRight className="lg:hidden h-8 w-8 text-white cursor-pointer" />
+          <HiBars3BottomRight
+            className="lg:hidden h-8 w-8 text-white cursor-pointer"
+            onClick={handleShowNav}
+          />
         </div>
       </div>
     </div>
