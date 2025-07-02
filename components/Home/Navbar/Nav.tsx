@@ -9,13 +9,14 @@ type NavProps = {
 }
 
 /** --- throttled --- */
-function throttle(fn: (...args: any[]) => void, delay: number) {
+function throttle(func: (...args: any[]) => void, delay: number): () => void {
   let lastCall = 0
+
   return function (...args: any[]) {
-    const now = new Date().getTime()
+    const now = Date.now()
     if (now - lastCall >= delay) {
       lastCall = now
-      fn(...args)
+      func(...args)
     }
   }
 }
