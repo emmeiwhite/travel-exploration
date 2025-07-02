@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>Home Component</div>
+  return <div className="overall-hidden">Home Component</div>
 }

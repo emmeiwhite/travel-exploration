@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google'
 import './globals.css'
 import { Metadata } from 'next'
+import ResponsiveNav from '@/components/Home/Navbar/ResponsiveNav'
 
 const font = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -16,9 +17,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${font.className} antialiased`}>
-        <nav>NAVBAR</nav>
+        <ResponsiveNav />
         {children}
-        <footer>FOOTER</footer>
       </body>
     </html>
   )
