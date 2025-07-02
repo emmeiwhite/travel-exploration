@@ -1,5 +1,6 @@
 import { navLinks } from '@/constants/constants'
 import Link from 'next/link'
+import { HiBars3BottomRight } from 'react-icons/hi2'
 import { TbAirBalloon } from 'react-icons/tb'
 
 export default function Nav() {
@@ -32,6 +33,16 @@ export default function Nav() {
             )
           })}
         </nav>
+
+        {/* 3. Buttons */}
+
+        <div className="flex items-center gap-4">
+          <button className="px-6 py-1.5 sm:px-8 sm:py-2 md:px-12 md:py-2.5 text-black text-base bg-white rounded-lg transition-all duration-200 hover:bg-gray-200 cursor-pointer">
+            Book Now
+          </button>
+
+          <HiBars3BottomRight className="lg:hidden h-8 w-8 text-white cursor-pointer" />
+        </div>
       </div>
     </div>
   )
