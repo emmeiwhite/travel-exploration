@@ -8,26 +8,45 @@ type NavProps = {
   handleShowNav: () => void
 }
 
+/** --- throttled --- */
+function throttle(fn: (...args: any[]) => void, delay: number) {
+  let lastCall = 0
+  return function (...args: any[]) {
+    const now = new Date().getTime()
+    if (now - lastCall >= delay) {
+      lastCall = now
+      fn(...args)
+    }
+  }
+}
+
 export default function Nav({ handleShowNav }: NavProps) {
   const [hasScrollBg, setHasScrollBg] = useState(false)
 
   // 1. Rule of law in React --- Perform side-effect in useEffect()
   useEffect(() => {
     const handleScroll = () => {
-      const scrollValue = window.scrollY
+      console.count('Scroll event fired')
+      setHasScrollBg(prev => {
+        if (window.scrollY > 100 && !prev) return true
+        if (window.scrollY <= 100 && prev) return false
 
-      if (scrollValue > 100) {
-        setHasScrollBg(true)
-      } else if (scrollValue <= 100) {
-        setHasScrollBg(false)
-      }
+        return prev
+      })
     }
 
+    const throttledScroll = throttle(handleScroll, 300) // // runs max once every 300ms
+
     //   Setting the scroll handler --- which is a high frequency event
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', throttledScroll)
+
+    /**
+     * ✅ Problem 1 fixed: React now reacts to accurate scroll state
+     * ✅ Problem 2 solved: handleScroll fires max 3 times per second (300ms delay)
+     */
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', throttledScroll)
     }
   }, [])
 
