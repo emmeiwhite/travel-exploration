@@ -1,4 +1,4 @@
-// Structural Typing or Duck Typing
+// 1. Structural Typing or Duck Typing
 
 type Duck = {
   sound: string
@@ -26,6 +26,7 @@ type User = {
 
 const logUser = (user: User) => {
   console.log(user.name)
+  console.log(user.age)
 }
 
 const someone = {
@@ -37,6 +38,22 @@ const someone = {
 logUser(someone) // allowed, extra properties are ignored
 
 // Even though someone has more than just id and name, TypeScript allows it because it structurally matches the User type.
+
+// 2. Interface / Type when an object has a method associated
+
+interface IEmployee {
+  id: number
+  getDetails: (username: string, userage: number) => string
+}
+
+const employee: IEmployee = {
+  id: 23,
+  getDetails: (username: string, userage: number) => {
+    return username + userage
+  }
+}
+
+console.log(employee.getDetails('rafia', 22))
 
 export default function TS() {
   return (
