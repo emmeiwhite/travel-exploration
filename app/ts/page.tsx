@@ -15,7 +15,7 @@ const animal = {
 
 // Valid: animal has the structure Duck requires
 const duck: Duck = animal
-
+console.log(duck)
 /** Even though animal is not explicitly declared as type Duck, it satisfies the structure, so TypeScript allows assignment ✅ */
 
 // 2. Real-world Example: Imagine a function that takes a user object
