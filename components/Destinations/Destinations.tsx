@@ -2,11 +2,14 @@ import SectionHeading from '../Helper/SectionHeading'
 
 export default function Destinations() {
   return (
-    <div>
+    <div className="py-20">
+      {/* 1. Section Heading  */}
       <SectionHeading
-        heading="Destinations"
-        subheading="Enjoy the nature to its fullest"
+        heading="Exploring Popular Destinations"
+        subheading="Enjoy the nature to its fullest with curated tour destinations for you and your loved ones"
       />
+
+      {/* 2. Section Content */}
     </div>
   )
 }

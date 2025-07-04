@@ -36,7 +36,7 @@ export default function Nav({ handleShowNav }: NavProps) {
       })
     }
 
-    const throttledScroll = throttle(handleScroll, 300) // // runs max once every 300ms
+    const throttledScroll = throttle(handleScroll, 200) // // runs max once every 300ms
 
     //   Setting the scroll handler --- which is a high frequency event
     window.addEventListener('scroll', throttledScroll)
