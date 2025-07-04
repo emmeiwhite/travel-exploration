@@ -8,11 +8,27 @@ type NavProps = {
   handleShowNav: () => void
 }
 
-/** --- throttled --- */
-function throttle(func: (...args: any[]) => void, delay: number): () => void {
+/** --- throttled 
+function throttle(func: (event: Event) => void, delay: number): (event: Event) => void {
   let lastCall = 0
 
-  return function (...args: any[]) {
+  return function (event: Event) {
+    const now = Date.now()
+    if (now - lastCall >= delay) {
+      lastCall = now
+      func(event)
+    }
+  }
+}
+--- */
+
+function throttle<T extends (...args: unknown[]) => void>(
+  func: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let lastCall = 0
+
+  return function (...args: Parameters<T>) {
     const now = Date.now()
     if (now - lastCall >= delay) {
       lastCall = now
