@@ -1,3 +1,5 @@
+import SearchForm from '@/components/Helper/SearchForm'
+
 export default function Hero() {
   return (
     <div className="relative h-[120vh] sm:h-[100vh] w-full">
@@ -15,12 +17,23 @@ export default function Hero() {
       />
 
       {/* 3. Text Content */}
-      {/* 
-      <div className="min-h-[200px] min-w-fit bg-white w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <h1 className="text-xl text-black tracking-[0.7rem] uppercase">Lets enjoy the Nature</h1>
 
-        <p>Get the best prices on, 2,000,000 + properties world wide</p>
-      </div> */}
+      <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+        <div className="flex items-center justify-center flex-col w-full">
+          {/* Heading */}
+          <div>
+            <h1 className="text-[25px] mb-4 md:mb-0 text-center md:text-[35px] lg:text-[45px] tracking-[0.7rem] text-white  uppercase font-bold">
+              Lets enjoy the Nature
+            </h1>
+            <p className="text-lg md:text-base  text-center font-normal text-white [word-spacing:5px] mt-1">
+              Get the best prices on 2,000,000+ properties worldwide
+            </p>
+          </div>
+
+          {/* Search Form */}
+          <SearchForm />
+        </div>
+      </div>
     </div>
   )
 }
