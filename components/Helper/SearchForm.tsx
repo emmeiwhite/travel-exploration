@@ -5,7 +5,7 @@ export default function SearchForm() {
   return (
     <section className="w-full flex flex-col items-center">
       {/* Search Form Inputs */}
-      <div className="bg-white rounded-sm grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-8 w-9.5/10 sm:w-4/5 items-center justify-center sm:mt-12 ">
+      <div className="bg-white rounded-sm grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-8 w-9/10 sm:w-4/5 items-center justify-center mt-5 sm:mt-12 ">
         {/* First Search Inputt*/}
         <div className="flex items-center gap-6">
           <FaMap className="text-blue-600 w-6 h-6" />
