@@ -73,7 +73,7 @@ export default function Nav({ handleShowNav }: NavProps) {
         hasScrollBg ? 'bg-blue-950 shadow-md' : ''
       } transition-all duration-200 h-[12vh] z-30 fixed w-full`}>
       {/* Layout Container */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-0 flex items-center justify-between h-full">
+      <div className="max-w-6xl mx-auto px-6 sm:px-5 flex items-center justify-between h-full">
         {/* 1. LOGO */}
         <div className="flex items-center gap-2">
           {/* Icon */}

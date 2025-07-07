@@ -11,7 +11,7 @@ export default function Destinations() {
       />
 
       {/* 2. Section Content */}
-      <div className="mt-14 mx-auto max-w-6xl px-6 sm:px-0">
+      <div className="mt-14 mx-auto max-w-6xl px-6 sm:px-5">
         <DestinationsSlider />
       </div>
     </div>
